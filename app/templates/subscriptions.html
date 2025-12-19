@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block title %}Мои подписки - Управление подписками{% endblock %}
+
+{% block content %}
+<div class="subscriptions-page">
+    <div class="page-header">
+        <h2>Мои подписки</h2>
+        <button class="btn btn-primary" onclick="showAddModal()">Добавить подписку</button>
+    </div>
+
+    <div id="errorMessage" class="message message-error" style="display: none;"></div>
+
+    <table class="subscriptions-table">
+        <thead>
+            <tr>
+                <th>Название</th>
+                <th>Сумма</th>
+                <th>Интервал</th>
+                <th>Следующее списание</th>
+                <th>Действия</th>
+            </tr>
+        </thead>
+        <tbody id="subscriptionsTableBody">
+            <tr>
+                <td colspan="5" class="loading">Загрузка...</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- Модальное окно для добавления/редактирования подписки -->
+<div id="subscriptionModal" class="modal" style="display: none;">
+    <div class="modal-content">
+        <span class="close" onclick="hideModal()">&times;</span>
+        <h3 id="modalTitle">Добавить подписку</h3>
+        <form id="subscriptionForm">
+            <input type="hidden" id="subscriptionId" name="id">
+            <div class="form-group">
+                <label for="name">Название:</label>
+                <input type="text" id="name" name="name" required maxlength="200">
+            </div>
+            <div class="form-group">
+                <label for="amount">Сумма:</label>
+                <input type="number" id="amount" name="amount" step="0.01" min="0.01" required>
+            </div>
+            <div class="form-group">
+                <label for="interval">Интервал:</label>
+                <select id="interval" name="interval" required>
+                    <option value="monthly">Ежемесячно</option>
+                    <option value="yearly">Ежегодно</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="next_billing_date">Следующее списание:</label>
+                <input type="date" id="next_billing_date" name="next_billing_date" required>
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Сохранить</button>
+                <button type="button" class="btn btn-secondary" onclick="hideModal()">Отмена</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
+

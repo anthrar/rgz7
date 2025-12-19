@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Регистрация - Управление подписками{% endblock %}
+
+{% block content %}
+<div class="auth-form">
+    <h2>Регистрация</h2>
+    <form id="registerForm" method="POST">
+        <div class="form-group">
+            <label for="username">Имя пользователя:</label>
+            <input type="text" id="username" name="username" required minlength="3">
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Пароль:</label>
+            <input type="password" id="password" name="password" required minlength="6">
+        </div>
+        <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+    </form>
+    <p class="auth-link">Уже есть аккаунт? <a href="{{ url_for('auth.login') }}">Войти</a></p>
+</div>
+{% endblock %}
+

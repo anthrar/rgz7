@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="welcome">
+    <h2>Добро пожаловать!</h2>
+    <p>Система управления финансовыми подписками</p>
+    {% if not current_user.is_authenticated %}
+        <div class="auth-links">
+            <a href="{{ url_for('auth.login') }}" class="btn btn-primary">Войти</a>
+            <a href="{{ url_for('auth.register') }}" class="btn btn-secondary">Регистрация</a>
+        </div>
+    {% else %}
+        <a href="{{ url_for('main.subscriptions') }}" class="btn btn-primary">Мои подписки</a>
+    {% endif %}
+</div>
+{% endblock %}
+
