@@ -1,0 +1,7 @@
+exclude_dirs:
+  - tests
+  - venv
+  - migrations
+
+skips:
+  - B104 # приложение слушает все сетевые интерфейсы (0.0.0.0)
